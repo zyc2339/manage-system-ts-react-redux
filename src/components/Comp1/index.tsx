@@ -5,9 +5,9 @@ import {RetweetOutlined} from "@ant-design/icons"
 export default function Comp() {
   return (
     <div className={styles.box}>
-      <p>This is comp1</p>
+      <p>This is temp component</p>
       <Button type="primary">Primary Button</Button>
-          <RetweetOutlined style={{fontSize:"40px"}} />
+      <RetweetOutlined style={{ fontSize: "40px" }} />
     </div>
   );
 }

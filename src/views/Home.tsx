@@ -1,59 +1,12 @@
 import React, { useState } from "react";
-import { redirect, Outlet } from "react-router-dom";
-import {
-  DesktopOutlined,
-  FileOutlined,
-  PieChartOutlined,
-  TeamOutlined,
-  UserOutlined,
-} from "@ant-design/icons";
-import type { MenuProps } from "antd";
-import { Breadcrumb, Layout, Menu, theme } from "antd";
-
+import { Outlet } from "react-router-dom";
+import { Breadcrumb, Layout, theme } from "antd";
+import MainMenu from "@/components/MainMenu/index";
 
 const { Content, Footer, Sider } = Layout;
 
-type MenuItem = Required<MenuProps>["items"][number];//type of index number for ["items"][number]
-
-function getItem(
-  label: React.ReactNode,
-  key: React.Key,
-  icon?: React.ReactNode,
-  children?: MenuItem[]
-): MenuItem {
-  return {
-    key,
-    icon,
-    children,
-    label,
-  } as MenuItem;
-}
-//modifiy the value of key => router path
-const items: MenuItem[] = [
-  getItem("Welcome", "/home/page1", <PieChartOutlined />),
-  getItem("Option 2", "/home/page2", <DesktopOutlined />),
-  getItem("User", "sub1", <UserOutlined />, [
-    getItem("Tom", "3"),
-    getItem("Bill", "4"),
-    getItem("Alex", "5"),
-  ]),
-  getItem("Team", "sub2", <TeamOutlined />, [
-    getItem("Team 1", "6"),
-    getItem("Team 2", "8"),
-  ]),
-  getItem("Files", "9", <FileOutlined />),
-];
-
 const View: React.FC = () => {
   const [collapsed, setCollapsed] = useState(false);
-  //set up path link navigate
-  // const navigateTo = useNavigate();
-  //set up click function in menu
-  const menuClick = (e: { key: string }) => {
-    console.log(e)
-    console.log(e.key)
-   return redirect(e.key);
-  }
 
   const {
     token: { colorBgContainer, borderRadiusLG },
@@ -68,13 +21,8 @@ const View: React.FC = () => {
         onCollapse={(value) => setCollapsed(value)}
       >
         <div className="demo-logo-vertical" />
-        <Menu
-          theme="dark"
-          defaultSelectedKeys={["/home/page1"]}
-          mode="inline"
-          items={items}
-          onClick={menuClick}
-        />
+        {/* import MainMenu from components */}
+        <MainMenu />
       </Sider>
       {/* right section */}
       <Layout>
@@ -92,7 +40,7 @@ const View: React.FC = () => {
               borderRadius: borderRadiusLG,
             }}
           >
-           <Outlet /> 
+            <Outlet />
           </div>
         </Content>
         <Footer style={{ textAlign: "center" }}>

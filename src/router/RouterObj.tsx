@@ -1,22 +1,47 @@
-//set up router use object, not using this file, keep it as reference
-
-import Home from "../views/Home.tsx";
-import About from "../views/About.tsx";
+//set up router use object, switch using this file
+import { lazy } from "react";
+import Home from "../views/Home";
+// import About from "../views/About";
+const About = lazy(() => import("../views/About"));
+const Welcome = lazy(() => import("../views/Welcome"));
+const User = lazy(() => import("../views/User"));
+const Team = lazy(() => import("../views/Team"));
 import { Navigate } from "react-router-dom";
 
-const objRouter = [
+const objRoutes = [
   {
+    //set up default path is /page1
     path: "/",
-    element: <Navigate to="/home"/>,
+    element: <Navigate to="/welcome" />,
   },
   {
-    path: "/home",
-    element: <Home></Home>,
+    //set up /home path with Home component
+    path: "/",
+    element: <Home />,
+    children: [
+      {
+        path: "/welcome",
+        element: <Welcome />,
+      },
+      {
+        path: "/about",
+        element: <About />,
+      },
+      {
+        path: "/user/userId",
+        element: <User />,
+      },
+      {
+        path: "/team/teamId",
+        element: <Team />,
+      },
+    ],
   },
   {
-    path: "/about",
-    element: <About></About>,
-  }
+    //error path handler, back to default page
+    path: "*",
+    element: <Navigate to="/welcome" />,
+  },
 ];
 
-export default objRouter;
+export default objRoutes;
