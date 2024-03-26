@@ -1,0 +1,17 @@
+$color:#eee;
+
+body{
+    background-color: $color;
+    user-select:none; // Disable select text
+}
+
+img {
+    -webkit-user-drag: none;//disable drage image
+}
+
+//home.tsx  as home page, we can use global style
+.demo-logo-vertical{
+    height: 32px;
+    margin: 16px;
+    background-color: rgba(255,255,255,0.3);
+}
