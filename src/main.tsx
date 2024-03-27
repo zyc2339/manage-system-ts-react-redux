@@ -10,6 +10,7 @@ import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
+  // Side effect of StrictMode => print console twice.
   <React.StrictMode>
     <BrowserRouter>
       <App />

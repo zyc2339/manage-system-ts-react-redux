@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import {
   DesktopOutlined,
   FileOutlined,
@@ -31,12 +31,12 @@ const items: MenuItem[] = [
   //each element in this array is object
   getItem("Welcome", "/welcome", <PieChartOutlined />),
   getItem("About us", "/about", <DesktopOutlined />),
-  getItem("User", "sub1", <UserOutlined />, [
+  getItem("User", "user", <UserOutlined />, [
     getItem("Tom", "/user/userId"),
     getItem("Bill", "/user/us"),
     getItem("Alex", "/user/u"),
   ]),
-  getItem("Team", "sub2", <TeamOutlined />, [
+  getItem("Team", "team", <TeamOutlined />, [
     getItem("Delivery", "/team/teamId"),
     getItem("Marketing", "/team/teamI"),
   ]),
@@ -54,9 +54,40 @@ const items: MenuItem[] = [
 // ]
 
 const MainMenu: React.FC = () => {
-  const [subMenuArr, setSubMenuArr] = useState([""]);
   //set up path link navigate
   const navigateTo = useNavigate();
+  //find the current URL pathname
+  const currentRoute = useLocation(); // console.log(currentRoute.pathname);
+
+  //make sure open the right submenu when reload page, we need to find the submenu's key
+  let firstOpenKey: string  = "";
+  //check if we can find the pathname in the submenu children object
+  const findObjKey = (obj: { key: string }) => {
+    //It specifies that the object ☝🏼must have a property named key, and the value of this property must be of type string.
+    return obj.key === currentRoute.pathname; //return boolean
+  };
+
+  for (let i = 0; i < items.length; i++) {
+    //if we can find it, we will get the key of the submenu
+    // const existKey = items[i]["children"].find(findObjKey)
+    if (
+      //@ts-ignore Object probably null
+      items[i]["children"] &&
+      //@ts-ignore Object probably null
+      items[i]["children"].length > 0 &&
+      //@ts-ignore Object probably null
+      items[i]["children"].find(findObjKey)
+    ) {
+      //@ts-ignore Type React.key is not the same as string for firstOpenKey
+      firstOpenKey = items[i].key;
+      break;
+    }
+  }
+
+  // set up opened submenu
+  //initial value should be the submenu's key
+  const [subMenuArr, setSubMenuArr] = useState([firstOpenKey]);
+
   //set up click function in menu
   const menuClick = (e: { key: string }) => {
     // console.log(e);
@@ -76,7 +107,7 @@ const MainMenu: React.FC = () => {
     <Menu
       theme="dark"
       // update default👇🏼
-      defaultSelectedKeys={["/welcome"]}
+      defaultSelectedKeys={[currentRoute.pathname]}
       mode="inline"
       //items are the data of menu
       items={items}
