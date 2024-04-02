@@ -1,5 +1,5 @@
 //encapsulation for store data
- const state = {
+ const store = {
    state: {
      num: 20,
    },
@@ -21,10 +21,10 @@
  //Generate actionNames automatically
  let actionNames = {};
  //loop actions
- for (let key in state.actions) {
+ for (let key in store.actions) {
    //@ts-ignore
    actionNames[key] = key;
  }
- state.actionNames = actionNames;
+ store.actionNames = actionNames;
 
- export default state;
+ export default store;

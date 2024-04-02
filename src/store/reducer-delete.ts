@@ -1,4 +1,5 @@
-//this file can be deleted after encapsulation
+//this file can be deleted after encapsulation, no longer needed.
+//original reducer file
 
 //prepare data
 import handleNum from "./NumStatus/index";

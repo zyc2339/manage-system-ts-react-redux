@@ -1,18 +1,14 @@
-//encapsulation for store array data
+//example for index.ts
+//after update state and action, just need to import the reducer into /store/index.ts😜
 const store = {
   state: {
-    sarr: [10, 20, 30],
+    //👉🏼update data here
   },
+  //after optimizition,  the only thing we need to do is update function here
   actions: {
-    sarrpush(
-      newState: { sarr: number[] },
-      action: { type: string; val: number }
-    ) {
-      newState.sarr.push(action.val);
-    },
+    //👉🏼write methid here
   },
   //name management
-  // sarrpush: "sarrpush",
   actionNames: {},
 };
 //Generate actionNames automatically

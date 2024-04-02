@@ -6,7 +6,7 @@ const defaultState = {
   ...handleNum.state, //destructure systax
 };
 //update state
-let reducer = (state = defaultState, action: { type: string; val: number }) => {
+let reducer = (state = defaultState, action: { type: string }) => {
   //dispatch() will trigger this function
   console.log("reducer called");
   let newState = JSON.parse(JSON.stringify(state)); //create a deep copy of an object
