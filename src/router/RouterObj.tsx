@@ -1,6 +1,7 @@
 //set up router use object, switch using this file
 import { lazy } from "react";
 import Home from "../views/Home";
+import Login from "../views/Login";
 // import About from "../views/About";
 const About = lazy(() => import("../views/About"));
 const Welcome = lazy(() => import("../views/Welcome"));
@@ -36,6 +37,10 @@ const objRoutes = [
         element: <Team />,
       },
     ],
+  },
+  {
+    path: "/login",
+    element: <Login />,
   },
   {
     //error path handler, back to default page

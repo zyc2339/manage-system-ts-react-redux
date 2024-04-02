@@ -9,11 +9,19 @@ import "@/assets/styles/global.scss"; //2️⃣Global CSS
 import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 
+//set up redux
+//state management
+import { Provider } from 'react-redux';
+import store from "@/store"
+
+
 ReactDOM.createRoot(document.getElementById("root")!).render(
-  // Side effect of StrictMode => print console twice.
-  <React.StrictMode>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  </React.StrictMode>
+  <Provider store={store}>
+    {/* Side effect of StrictMode => print console twice. */}
+    <React.StrictMode>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </React.StrictMode>
+  </Provider>
 );
