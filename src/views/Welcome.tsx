@@ -22,7 +22,7 @@ const Welcome = () => {
 
   const changeNum = () => {
     //value is optional
-    dispatch({ type: "add2", val: 10 });
+    dispatch({ type: "add3", val: 200 });
   };
 
   //sarr

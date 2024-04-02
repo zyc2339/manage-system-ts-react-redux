@@ -12,15 +12,22 @@ let reducer = (
   //dispatch() will trigger this function
   console.log("reducer called");
   let newState = JSON.parse(JSON.stringify(state)); //create a deep copy of an object
-  switch (action.type) {
-    case handleArr.sarrpush:
-      // newState.num++;
-      handleArr.actions[handleArr.sarrpush](newState, action);
-      break;
+  // switch (action.type) {
+  //   case handleArr.sarrpush:
+  //     // newState.num++;
+  //     handleArr.actions[handleArr.sarrpush](newState, action);
+  //     break;
 
-    default:
-      break;
+  //   default:
+  //     break;
+  // }
+  for (let key in handleArr.actionNames) {
+    if (action.type === handleArr.actionNames[key]) {
+      handleArr.actions[handleArr.actionNames[key]](newState, action);
+    }
+    break;
   }
+
   return newState;
 };
 export default reducer;

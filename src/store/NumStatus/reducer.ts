@@ -25,7 +25,8 @@ switch (action.type) {
     
   default:
     break;
-  }*/
+  }
+*/
   // [optimization]
   //use loop instead of switch, because use switch we need to update function in here use case
   //we can compare  action.type with actionNames, if they are matched, then we can call the function

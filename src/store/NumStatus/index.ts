@@ -1,20 +1,30 @@
 //encapsulation for store data
-export default {
-  state: {
-    num: 20,
-  },
-  actions: {
-    add1(newState: { num: number }, action: { type: string }) {
-      newState.num++;
-    },
-    add2(newState: { num: number }, action: { type: string; val: number }) {
-      newState.num += action.val;
-    },
-  },
-  //name management
-  //
-  actionNames: {
-    add1: "add1",
-    add2: "add2",
-  },
-};
+ const state = {
+   state: {
+     num: 20,
+   },
+   //after optimizition,  the only thing we need to do is update function here
+   actions: {
+     add1(newState: { num: number }, action: { type: string }) {
+       newState.num++;
+     },
+     add2(newState: { num: number }, action: { type: string; val: number }) {
+       newState.num += action.val;
+     },
+     add3(newState: { num: number }, action: { type: string; val: number }) {
+       newState.num += action.val;
+     },
+   },
+   //name management
+   actionNames: {},
+ };
+ //Generate actionNames automatically
+ let actionNames = {};
+ //loop actions
+ for (let key in state.actions) {
+   //@ts-ignore
+   actionNames[key] = key;
+ }
+ state.actionNames = actionNames;
+
+ export default state;

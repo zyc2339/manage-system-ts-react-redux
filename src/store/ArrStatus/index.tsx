@@ -1,5 +1,5 @@
 //encapsulation for store array data
-export default {
+const state = {
   state: {
     sarr: [10, 20, 30],
   },
@@ -12,5 +12,16 @@ export default {
     },
   },
   //name management
-  sarrpush: "sarrpush",
+  // sarrpush: "sarrpush",
+  actionNames: {},
 };
+//Generate actionNames automatically
+let actionNames = {};
+//loop actions
+for (let key in state.actions) {
+  //@ts-ignore
+  actionNames[key] = key;
+}
+state.actionNames = actionNames;
+
+export default state;
