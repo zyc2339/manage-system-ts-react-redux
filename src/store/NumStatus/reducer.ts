@@ -32,9 +32,7 @@ switch (action.type) {
   //we can compare  action.type with actionNames, if they are matched, then we can call the function
   // handleNum.actions["function name"](newState, action)
   for (let key in handleNum.actionNames) {
-    //@ts-ignore
     if (action.type === handleNum.actionNames[key]) {
-      //@ts-ignore
       handleNum.actions[handleNum.actionNames[key]](newState, action);
       break;
     }

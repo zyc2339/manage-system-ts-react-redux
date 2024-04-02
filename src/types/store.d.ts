@@ -13,4 +13,6 @@ When you declare a type in a store.d.ts file, it becomes available globally with
 //fix type error in store.index.tsx3️👇🏼
 interface Window {
   __REDUX_DEVTOOLS_EXTENSION__: function;
+  __REDUX_DEVTOOLS_EXTENSION_COMPOSE__: function;
 }
+
