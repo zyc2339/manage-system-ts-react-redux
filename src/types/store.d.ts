@@ -1,5 +1,5 @@
 //This file will store initial global type
-//don't use import .... from .....
+//Please don't use import .... from .....
 //use this import("@/store") -> then you can just use it without import it inside of components
 
 //ReturnType is a utility type that is used to extract the return type of a function type or a constructor type.
